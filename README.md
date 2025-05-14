@@ -1,50 +1,128 @@
 # Ad Performance & Revenue Analytics
 
-This project analyses advertising data for a digital media and publishing company. The aim is to pinpoint which ad formats, channels, and sites drive revenue, understand delivery gaps, and recommend budget shifts that improve return on spend.
+This repository contains an end-to-end analysis of advertising performance data for a digital media and publishing company. The objective is to reveal which ad formats, channels, and sites deliver the greatest revenue, identify delivery gaps, and recommend budget shifts that improve return on spend.
 
-## Project objectives
+---
 
-1. **Data preparation**  
-   - Parse the *Ad Unit* string to extract site abbreviations.  
-   - Map abbreviations to full site names using the lookup table and remove unmatched rows.  
-   - Save the cleaned file in `/data/ad_performance_clean.xlsx`. 
+## 1. Project Goals
 
-2. **Exploratory analysis**  
-   - Identify top and bottom revenue sites for the last 7 days and the full month.  
-   - Calculate each site’s share of monthly revenue.  
-   - Compute CPM by site and device and measure fill rate.  
-   - Detect the site with the largest CPM lift over 30 days and check for metric correlations.
-     
-3. **Executive visuals**  
-   - Bar chart: nominal revenue by device.  
-   - Stacked bar: daily impression mix by site.  
-   - Line chart: daily CPM trend for the month. 
+| # | Objective | Outcome |
+|---|-----------|---------|
+| 1 | Prepare a clean, analysis-ready dataset | `data/ad_performance_clean.xlsx` |
+| 2 | Explore revenue and delivery patterns by site, device, and ad unit | SQL queries and Excel pivots |
+| 3 | Visualise key findings for executives | Three charts in `/visuals` |
+| 4 | Produce a rolling seven-day revenue view for weekly dashboards | Query Q4 in `sql/ad_performance_analysis.sql` |
+| 5 | Summarise insights and recommended actions | `docs/executive_summary.pdf` |
 
-4. **Performance insight and recommendations**  
-   - Flag any date where performance shifted and describe KPI impact.  
-   - Summarise revenue, CPM, and fill-rate findings into clear optimisation actions.
+---
 
-5. **SQL reproducibility**  
-   - Recreate core metrics in Snowflake-style SQL to validate results at warehouse scale.  
-   - Include four queries: site revenue by date, desktop ad units on Decoist, March CPM by site and device, and seven-day revenue joined to site names. 
+## 2. Data and Methods
 
-## Data and methods
+| Step | Description | Tool |
+|------|-------------|------|
+| Extraction | Raw impression and billing exports | SQLite |
+| Cleaning | Site abbreviation parsing, lookup join, error removal | SQLite, Excel |
+| Analysis | Pivot tables, custom KPIs (CPM, fill rate) | Excel |
+| Reproducibility | Parameterised SQL scripts | SQLite compatible |
+| Visualisation | Revenue and trend charts | Excel PNG export |
 
-| Step | Description | Tools |
-|------|-------------|-------|
-| Extraction | Ad server and billing tables exported to Excel | SQL |
-| Cleaning | Site parsing, lookup join, error removal | SQL, Excel |
-| Analysis | Pivot tables, custom metrics, correlation checks | Excel |
-| Visualisation | Management charts for revenue and delivery | Excel (pivot charts) |
-| Validation | Snowflake queries mirror Excel calculations | SQL |
+> **Production note**  
+> In a warehouse environment (for example Snowflake or BigQuery) the inline `site_lookup` table in Q4 would be replaced by a join to the permanent site dimension. The lookup creation statements remain in the script, so the project runs immediately in SQLite.
 
-## Folder guide
+---
 
-- **`data/`** Raw and cleaned datasets  
-- **`sql/`** All transformation and aggregation scripts  
-- **`notebooks/`** Optional step-by-step walk-through (Jupyter)  
-- **`visuals/`** Charts referenced in this README  
-- **`docs/`** One-page executive summary for quick review
+## 3. Repository Structure
 
-## Author
-Agnes Ekpo 
+ad-performance-revenue-analytics/
+│
+├── data/
+│ ├── raw_data.xlsx
+│ └── ad_performance_clean.xlsx
+│
+├── sql/
+│ └── ad_performance_analysis.sql
+│
+├── notebooks/ # optional walkthroughs
+│ └── walkthrough.ipynb
+│
+├── visuals/
+│ ├── revenue_by_device.png
+│ ├── impressions_mix_by_day.png
+│ └── cpm_trend.png
+│
+├── docs/
+│ └── executive_summary.pdf
+│
+├── README.md
+├── LICENSE
+└── .gitignore
+
+---
+
+## 4. Key Insights
+
+* **Top-grossing sites**  
+  War History Online generated CA$31.3 k for the month, equal to 36% of total revenue, and CA $8.0 k in the last seven days. The Vintage News (CA $21.1 k, 24%) and Iwastesomuchtime (CA $17.1 k, 21%) complete the lead group.
+
+* **Device mix**  
+  Smartphones account for 59% of revenue (CA$51.1k). Desktop follows at 35% (CA$30.1k). Tablets and connected TVs are niche, feature phones are negligible.
+
+* **CPM leaderboard**  
+  Highest average CPMs belong to ManmadeDIY (CA $1.62), Slow Robot (CA$ 1.46), and Decoist (CA$ 1.46). The lowest CPMs sit with IloveWWIIPlanes (CA $0.27) and War History Online (CA $0.55).
+
+* **Fill-rate outliers**  
+  War History Online, ManmadeDIY, and The Vintage News all exceed 98% fill. Tank Roar trails at 63% and IloveWWIIPlanes at 77%.
+
+* **Momentum check – last seven days**  
+  Revenue share stayed concentrated in the same three lead properties. No emerging site showed breakout growth.
+
+---
+
+## 5. Recommendations
+
+1. **Lift CPM on War History Online**  
+   High traffic and 98% fill allow a measured floor-price increase or richer creative without volume loss.
+
+2. **Rebalance mobile video budget**  
+   Mobile video consumes 35% of spend yet returns only 19% of revenue. Shift 10 - 15% toward high-CPM desktop static ads.
+
+3. **Fix Tank Roar delivery issues**  
+   A 63% fill rate points to blocked tags or misconfigured demand. An ad-ops audit can reclaim lost impressions.
+
+4. **Expand high-CPM niche sites**  
+   ManmadeDIY and Slow Robot offer CPMs above CA $1.40. Even modest impression growth will add outsized revenue.
+
+5. **Automate the rolling seven-day query**  
+   Schedule the last-seven-days revenue view to refresh each morning so executives see trend shifts in real time.
+
+---
+
+## 6. Quick Start
+
+1. Clone the repository.  
+2. Open `data/ad_performance_clean.xlsx` and `performance_data` in your SQLite client.  
+3. Run `sql/ad_performance_analysis.sql` from top to bottom.  
+4. View or regenerate the charts in `/visuals`.  
+5. Read `docs/executive_summary.pdf` for a one-page overview.
+
+---
+
+## 7. Visual Gallery
+
+| Revenue by Device | Impressions Mix by Day | CPM Trend |
+|:-----------------:|:----------------------:|:---------:|
+| ![Revenue by Device](visuals/revenue_by_device.png) | ![Impressions Mix](visuals/impressions_mix_by_day.png) | ![CPM Trend](visuals/cpm_trend.png) |
+
+---
+
+## 8. Status
+
+Data cleaning is complete, SQL logic validated, charts exported, and the executive summary delivered. Next steps are daily automation in a warehouse and integration into a Power BI dashboard.
+
+---
+
+## 9. Author
+
+**Agnes Ekpo**  
+Connect on [LinkedIn](https://www.linkedin.com/in/agnesekpo) or visit [agnesekpo.com](https://agnesekpo.com) for more projects.
+
