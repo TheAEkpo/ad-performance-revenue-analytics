@@ -60,16 +60,16 @@ ad-performance-revenue-analytics/
 ## 4. Key Insights
 
 * **Top-grossing sites**  
-  War History Online generated CA$31.3 k for the month, equal to 36% of total revenue, and CA $8.0 k in the last seven days. The Vintage News (CA $21.1 k, 24%) and Iwastesomuchtime (CA $17.1 k, 21%) complete the lead group.
+  WarHistoryOnline generated CA$31.3 k for the month, equal to 36% of total revenue, and CA $8.0 k in the last seven days. TheVintageNews (CA $21.1 k, 24%) and Iwastesomuchtime (CA $17.1 k, 21%) complete the lead group.
 
 * **Device mix**  
   Smartphones account for 59% of revenue (CA$51.1k). Desktop follows at 35% (CA$30.1k). Tablets and connected TVs are niche, feature phones are negligible.
 
 * **CPM leaderboard**  
-  Highest average CPMs belong to ManmadeDIY (CA $1.62), Slow Robot (CA$ 1.46), and Decoist (CA$ 1.46). The lowest CPMs sit with IloveWWIIPlanes (CA $0.27) and War History Online (CA $0.55).
+  Highest average CPMs belong to ManmadeDIY (CA $1.62), SlowRobot (CA$ 1.46), and Decoist (CA$ 1.46). The lowest CPMs sit with IloveWWIIPlanes (CA $0.27) and WarHistoryOnline (CA $0.55).
 
 * **Fill-rate outliers**  
-  War History Online, ManmadeDIY, and The Vintage News all exceed 98% fill. Tank Roar trails at 63% and IloveWWIIPlanes at 77%.
+  WarHistoryOnline, ManmadeDIY, and TheVintageNews all exceed 98% fill. TankRoar trails at 63% and IloveWWIIPlanes at 77%.
 
 * **Momentum check – last seven days**  
   Revenue share stayed concentrated in the same three lead properties. No emerging site showed breakout growth.
