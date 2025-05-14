@@ -1,24 +1,50 @@
 # Ad Performance & Revenue Analytics
 
-This project analyzes ad performance data to uncover revenue trends, optimize spend efficiency, and inform monetization strategy. It combines SQL and Excel workflows to simulate real-world media analytics scenarios.
+This project analyses advertising data for a digital media and publishing company. The aim is to pinpoint which ad formats, channels, and sites drive revenue, understand delivery gaps, and recommend budget shifts that improve return on spend.
 
-## Project Objectives
-- Investigate how ad formats, channels, and geographies contribute to overall revenue.
-- Clean, transform, and analyze revenue data using SQL and Excel.
-- Visualize performance insights and propose optimizations.
+## Project objectives
 
-## Tools Used
-- MySQL
-- Microsoft Excel
-- Power BI 
+1. **Data preparation**  
+   - Parse the *Ad Unit* string to extract site abbreviations.  
+   - Map abbreviations to full site names using the lookup table and remove unmatched rows.  
+   - Save the cleaned file in `/data/ad_performance_clean.xlsx`. :contentReference[oaicite:0]{index=0}:contentReference[oaicite:1]{index=1}
 
-## Folder Structure
-- `data/`: raw and cleaned datasets
-- `sql/`: SQL queries used for extraction & transformation
-- `notebooks/`: Walkthrough of logic 
-- `visuals/`: Key charts and plots
-- `docs/`: Summary reports or PDFs 
+2. **Exploratory analysis**  
+   - Identify top and bottom revenue sites for the last 7 days and the full month.  
+   - Calculate each site’s share of monthly revenue.  
+   - Compute CPM by site and device and measure fill rate.  
+   - Detect the site with the largest CPM lift over 30 days and check for metric correlations. :contentReference[oaicite:2]{index=2}:contentReference[oaicite:3]{index=3}
 
-## Key Insights
+3. **Executive visuals**  
+   - Bar chart: nominal revenue by device.  
+   - Stacked bar: daily impression mix by site.  
+   - Line chart: daily CPM trend for the month. :contentReference[oaicite:4]{index=4}:contentReference[oaicite:5]{index=5}
 
+4. **Performance insight and recommendations**  
+   - Flag any date where performance shifted and describe KPI impact.  
+   - Summarise revenue, CPM, and fill-rate findings into clear optimisation actions.
 
+5. **SQL reproducibility**  
+   - Recreate core metrics in Snowflake-style SQL to validate results at warehouse scale.  
+   - Include four queries: site revenue by date, desktop ad units on Decoist, March CPM by site and device, and seven-day revenue joined to site names. :contentReference[oaicite:6]{index=6}:contentReference[oaicite:7]{index=7}
+
+## Data and methods
+
+| Step | Description | Tools |
+|------|-------------|-------|
+| Extraction | Ad server and billing tables exported to Excel | SQL |
+| Cleaning | Site parsing, lookup join, error removal | SQL, Excel |
+| Analysis | Pivot tables, custom metrics, correlation checks | Excel |
+| Visualisation | Management charts for revenue and delivery | Excel (pivot charts) |
+| Validation | Snowflake queries mirror Excel calculations | SQL |
+
+## Folder guide
+
+- **`data/`** Raw and cleaned datasets  
+- **`sql/`** All transformation and aggregation scripts  
+- **`notebooks/`** Optional step-by-step walk-through (Jupyter)  
+- **`visuals/`** Charts referenced in this README  
+- **`docs/`** One-page executive summary for quick review
+
+## Author
+Agnes Ekpo 
