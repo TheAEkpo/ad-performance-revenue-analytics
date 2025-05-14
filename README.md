@@ -32,30 +32,26 @@ This repository contains an end-to-end analysis of advertising performance data 
 ---
 
 ## 3. Repository Structure
-
 ad-performance-revenue-analytics/
 │
-├── data/
-│ ├── raw_data.xlsx
-│ └── ad_performance_clean.xlsx
+├── data/                    
+│   ├── raw_data.xlsx
+│   └── ad_performance_clean.xlsx
 │
-├── sql/
-│ └── ad_performance_analysis.sql
+├── sql/                   
+│   └── ad_performance_analysis.sql
 │
-├── notebooks/ # optional walkthroughs
-│ └── walkthrough.ipynb
+├── visuals/                 
+│   ├── revenue_by_device.png
+│   ├── impressions_mix_by_day.png
+│   └── cpm_trend.png
 │
-├── visuals/
-│ ├── revenue_by_device.png
-│ ├── impressions_mix_by_day.png
-│ └── cpm_trend.png
-│
-├── docs/
-│ └── executive_summary.pdf
+├── docs/                    
+│   └── executive_summary.pdf
 │
 ├── README.md
-├── LICENSE
-└── .gitignore
+├── LICENSE                   
+└── .gitignore               
 
 ---
 
