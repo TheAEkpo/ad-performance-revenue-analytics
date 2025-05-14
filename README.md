@@ -7,18 +7,18 @@ This project analyses advertising data for a digital media and publishing compan
 1. **Data preparation**  
    - Parse the *Ad Unit* string to extract site abbreviations.  
    - Map abbreviations to full site names using the lookup table and remove unmatched rows.  
-   - Save the cleaned file in `/data/ad_performance_clean.xlsx`. :contentReference[oaicite:0]{index=0}:contentReference[oaicite:1]{index=1}
+   - Save the cleaned file in `/data/ad_performance_clean.xlsx`. 
 
 2. **Exploratory analysis**  
    - Identify top and bottom revenue sites for the last 7 days and the full month.  
    - Calculate each site’s share of monthly revenue.  
    - Compute CPM by site and device and measure fill rate.  
-   - Detect the site with the largest CPM lift over 30 days and check for metric correlations. :contentReference[oaicite:2]{index=2}:contentReference[oaicite:3]{index=3}
-
+   - Detect the site with the largest CPM lift over 30 days and check for metric correlations.
+     
 3. **Executive visuals**  
    - Bar chart: nominal revenue by device.  
    - Stacked bar: daily impression mix by site.  
-   - Line chart: daily CPM trend for the month. :contentReference[oaicite:4]{index=4}:contentReference[oaicite:5]{index=5}
+   - Line chart: daily CPM trend for the month. 
 
 4. **Performance insight and recommendations**  
    - Flag any date where performance shifted and describe KPI impact.  
@@ -26,7 +26,7 @@ This project analyses advertising data for a digital media and publishing compan
 
 5. **SQL reproducibility**  
    - Recreate core metrics in Snowflake-style SQL to validate results at warehouse scale.  
-   - Include four queries: site revenue by date, desktop ad units on Decoist, March CPM by site and device, and seven-day revenue joined to site names. :contentReference[oaicite:6]{index=6}:contentReference[oaicite:7]{index=7}
+   - Include four queries: site revenue by date, desktop ad units on Decoist, March CPM by site and device, and seven-day revenue joined to site names. 
 
 ## Data and methods
 
