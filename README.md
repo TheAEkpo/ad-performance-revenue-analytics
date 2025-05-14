@@ -38,6 +38,8 @@ ad-performance-revenue-analytics/
 │   ├── raw_data.xlsx
 │   └── ad_performance_clean.xlsx
 │
+├── workbooks/            
+│   └── site_performance_pivots.xlsx
 ├── sql/                   
 │   └── ad_performance_analysis.sql
 │
